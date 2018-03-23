@@ -8,8 +8,22 @@ pipeline {
   }
   stages {
     stage('Build') {
+      parallel {
+        stage('Build') {
+          steps {
+            sleep 10
+          }
+        }
+        stage('') {
+          steps {
+            sleep 20
+          }
+        }
+      }
+    }
+    stage('') {
       steps {
-        sh 'npm install'
+        input 'Hello'
       }
     }
   }
