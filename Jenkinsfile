@@ -1,11 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:6-alpine'
-      args '-p 3000:3000'
-    }
-    
-  }
+  agent none
   stages {
     stage('Build') {
       parallel {
@@ -14,14 +8,14 @@ pipeline {
             sleep 10
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             sleep 20
           }
         }
       }
     }
-    stage('') {
+    stage('error') {
       steps {
         input 'Hello'
       }
